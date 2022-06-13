@@ -16,7 +16,7 @@ const closeBtn = document.querySelectorAll('.close');
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener('click', launchModal));
 
-//close model event
+// close model event
 closeBtn.forEach((btn) => btn.addEventListener('click', closeModal));
 
 function closeModal() {
@@ -27,3 +27,8 @@ function closeModal() {
 function launchModal() {
   modalbg.style.display = 'block';
 }
+
+// prevent submit
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+});
