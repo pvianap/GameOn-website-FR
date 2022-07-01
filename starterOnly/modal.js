@@ -40,32 +40,30 @@ function launchModal() {
 
 // prevent submit
 modalbg.addEventListener('submit', (e) => {
-  e.preventDefault();
-  isValid = true;
   validateAll();
-  console.log(isValid);
+  e.preventDefault();
+  if (isValid) {
+    finalMessage();
+    closeModal();
+  }
 });
 
-// Disable Submit
+//FINAL MESSAGE
 
-function disableSubmit(disabled) {
-  if (disabled) {
-    document.getElementById('submit-btn').setAttribute('disabled', true);
-  } else {
-    document.getElementById('submit-btn').removeAttribute('disabled');
-  }
+function finalMessage() {
+  var finalMsg = document.createElement('div');
+  finalMsg.textContent = reserved;
+  finalMsg.setAttribute('id', 'finalMsg');
+  document.querySelector('main').append(finalMsg);
 }
-
-//Submit and Validate
 
 // Regex
 let firstX = /^[a-z ,.'-]{2,60}$/i;
 let lastX = /^[a-z ,.'-]{2,60}$/i;
 let emailX = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/i;
 let quantityX = /^[0-9]+$/;
-
 // VALIDATIONS
-var isValid = true;
+var isValid = false;
 function validateFirst() {
   if (!firstX.test(first.value)) {
     first.style.border = 'solid red';
@@ -222,6 +220,7 @@ function validateCG() {
 }
 
 function validateAll() {
+  isValid = true;
   validateFirst();
   validateLast();
   validateEmail();
@@ -232,7 +231,7 @@ function validateAll() {
 }
 
 // MESSAGES
-var errorMessages = {
+const errorMessages = {
   first: 'Veuillez entrer un nom comportant 2 caractères ou plus.',
   last: 'Veuillez entrer un prénom comportant 2 caractères ou plus.',
   email: 'Veuillez entrer une adresse email valide.',
@@ -242,6 +241,7 @@ var errorMessages = {
   location: 'Veuillez choisir une ville.',
   checkbox: "Veuillez accepter les conditions d'utilisations.",
 };
+const reserved = 'Merci ! Votre réservation a été reçue.';
 
 //INPUTS
 
