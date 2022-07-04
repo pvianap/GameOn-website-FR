@@ -38,16 +38,6 @@ function launchModal() {
   modalbg.style.display = 'block';
 }
 
-// // submit
-// function disableSubmit(disabled) {
-//   if (disabled) {
-//     document.querySelector('.btn-submit').setAttribute('disabled', true);
-//   } else {
-//     document;
-//     document.querySelector('.btn-submit').removeAttribute('disabled');
-//   }
-// }
-
 modalbg.addEventListener('submit', (e) => {
   e.preventDefault();
   e.stopPropagation();
@@ -56,6 +46,7 @@ modalbg.addEventListener('submit', (e) => {
     closeModal();
     finalMessage();
     e.target.reset();
+    document.querySelector('.hero-section').remove();
   } else {
     validateAll();
   }
@@ -267,33 +258,3 @@ const inputs = [
   'location',
   'cg',
 ];
-
-// //CLASS SAMPLE
-
-// class minLength {
-//   constructor(minLength) {
-//     this.minLength = minLength;
-//   }
-//   validate(value) {
-//     return value.length > this.minLength;
-//   }
-// }
-// const validationRules = {
-//   '#first': [
-//     new minLength(2),
-//     new maxLength(30),
-//     new matchRegex(/^[A-Z]{1}[aZ-zZ]*$/),
-//   ],
-// };
-// function validate() {
-//   for (const [key, rules] of Object.entries(validationRules)) {
-//     const element = document.querySelector(key);
-//     rules.forEach((rule) => {
-//       if (rule.validate(element)) {
-//         // Pas d'erreur
-//       } else {
-//         // Erreur
-//       }
-//     });
-//   }
-// }
